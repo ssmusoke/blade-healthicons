@@ -17,7 +17,17 @@ final class BladeHealthIconsServiceProvider extends ServiceProvider
         $this->callAfterResolving(Factory::class, function (Factory $factory, Container $container) {
             $config = $container->make('config')->get('blade-healthicons', []);
 
-            $factory->add('healthicons', array_merge(['path' => __DIR__.'/../resources/svg'], $config));
+            $filledConfig = array_merge(['path' => __DIR__.'/../resources/svg/filled'], $config);
+            $filledConfig['prefix'] .= '_f';
+            $factory->add('healthicons-filled', $filledConfig);
+
+            $negativeConfig = array_merge(['path' => __DIR__.'/../resources/svg/negative'], $config);
+            $negativeConfig['prefix'] .= '_n';
+            $factory->add('healthicons-negative', $negativeConfig);
+
+            $solidConfig = array_merge(['path' => __DIR__.'/../resources/svg/outline'], $config);
+            $solidConfig['prefix'] .= '_o';
+            $factory->add('healthicons-outline', $solidConfig);
         });
     }
 
