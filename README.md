@@ -4,15 +4,15 @@
     <img src="https://github.com/ssmusoke/blade-healthicons/workflows/Tests/badge.svg" alt="Tests">
 </a>
 <a href="https://packagist.org/packages/ssmusoke/blade-healthicons">
-    <img src="https://img.shields.io/packagist/v/ssmusoke/blade-healthicons" alt="Latest Stable Version">
+    <img src="https://img.shields.io/packagist/v/ssmusoke/blade-healthicons?style=pl" alt="Latest Stable Version">
 </a>
 <a href="https://packagist.org/packages/ssmusoke/blade-healthicons">
     <img src="https://img.shields.io/packagist/dt/ssmusoke/blade-healthicons" alt="Total Downloads">
 </a>
 
-A package to easily make use of [Healthicons](https://github.com/refactoringui/heroicons) in your Laravel Blade views.
+A package to easily make use of [Health Icons](https://healthicons.org/) in your Laravel Blade views.
 
-For a full list of available icons see [the SVG directory](resources/svg) or preview them at [heroicons.com](https://heroicons.com/).
+For a full list of available icons see [the SVG directory](resources/svg) or preview them at [healthicons.org](https://healthicons.org/).
 
 ## Requirements
 
