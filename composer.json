@@ -1,37 +1,48 @@
 {
-    "name": "blade-organization/blade-heroicons",
-    "description": "A package to easily make use of Heroicons in your Laravel Blade views.",
-    "keywords": ["Blade", "Heroicons", "Laravel"],
-    "homepage": "https://github.com/blade-organization/blade-heroicons",
+    "name": "ssmusoke/blade-healthicons",
+    "description": "A package to easily make use of Health icons in your Laravel Blade views.",
+    "keywords": ["Blade", "health icons", "Laravel"],
+    "homepage": "https://github.com/ssmusoke/blade-healthicons",
     "license": "MIT",
     "authors": [
         {
-            "name": "Blade Developer"
+            "name": "Stephen Senkomago Musoke"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "blade-ui-kit/blade-icons": "^1.1",
-        "illuminate/support": "^8.0"
+        "blade-ui-kit/blade-icons": "^1.1"
     },
     "require-dev": {
+        "ext-dom": "*",
         "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
+        "pestphp/pest": "^1.8",
+        "phpstan/phpstan": "^0.12.82",
+        "spatie/pest-plugin-snapshots": "^1.0.1",
+        "symfony/var-dumper": "^5.1"
     },
     "autoload": {
         "psr-4": {
-            "BladeUI\\Heroicons\\": "src"
+            "SSMusoke\\HealthIcons\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "SSMusoke\\HealthIcons\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test:types": "phpstan analyse --ansi --memory-limit=0",
+        "test:unit": "pest --colors=always",
+        "test": [
+            "@test:types",
+            "@test:unit"
+        ]
     },
     "extra": {
         "laravel": {
             "providers": [
-                "BladeUI\\Heroicons\\BladeHeroiconsServiceProvider"
+                "SSMusoke\\HealthIcons\\BladeHealthIconsServiceProvider"
             ]
         }
     },

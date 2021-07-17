@@ -2,25 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace SSMusoke\HealthIcons\Tests;
 
-use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Orchestra\Testbench\TestCase;
+use SSMusoke\HealthIcons\BladeHealthIconsServiceProvider;
 
 class CompilesIconsTest extends TestCase
 {
     /** @test */
     public function it_compiles_a_single_anonymous_component()
     {
-        $result = svg('heroicon-o-bell')->toHtml();
+        $result = svg('healthicon-n-ambulatory_clinic')->toHtml();
 
         // Note: the empty class here seems to be a Blade components bug.
         $expected = <<<'SVG'
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-            </svg>
-            SVG;
+                    <svg fill="currentColor" stroke="none" viewBox="0 0 48 48"  xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 40H34V24H26V40Z" fill="#333333"/>
+                    <path d="M21 24H14V31H21V24Z" fill="#333333"/>
+                    <path d="M20 9H18V11H16V13H18V15H20V13H22V11H20V9Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H48V48H0V0ZM24.6531 9.98462H42.5V12.5014L38 15.5321V40H41C41.5523 40 42 40.4477 42 41C42 41.5523 41.5523 42 41 42H38V42.0154H10V42H7C6.44772 42 6 41.5523 6 41C6 40.4477 6.44772 40 7 40H10V15.4969L6 12.4662V9.98462H13.3469C14.1749 7.66227 16.3933 6 19 6C21.6067 6 23.8251 7.66227 24.6531 9.98462Z" fill="#333333"/>
+                    </svg>
+                    SVG;
 
         $this->assertSame($expected, $result);
     }
@@ -28,36 +31,40 @@ class CompilesIconsTest extends TestCase
     /** @test */
     public function it_can_add_classes_to_icons()
     {
-        $result = svg('heroicon-o-bell', 'w-6 h-6 text-gray-500')->toHtml();
+        $result = svg('healthicon-o-blood_a_n', 'w-6 h-6 text-gray-500')->toHtml();
 
         $expected = <<<'SVG'
-            <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-            </svg>
-            SVG;
-
+                    <svg class="w-6 h-6 text-gray-500" fill="currentColor" stroke="none" viewBox="0 0 48 48"  xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M28 8.3579C27.4625 8.3579 26.9475 8.14152 26.5714 7.75754L25.4393 6.60207C24.6529 5.79931 23.3471 5.79931 22.5607 6.60207L21.4286 7.75754C21.0525 8.14151 20.5375 8.3579 20 8.3579H14C12.8809 8.3579 12 9.25408 12 10.3273V34.0306C12 35.1038 12.8809 36 14 36H34C35.1191 36 36 35.1038 36 34.0306V10.3273C36 9.25408 35.1191 8.3579 34 8.3579H28ZM38 10.3273V34.0306C38 36.2228 36.2091 38 34 38H14C11.7909 38 10 36.2228 10 34.0306V10.3273C10 8.13507 11.7909 6.3579 14 6.3579H20L21.132 5.20243C22.7027 3.59919 25.2973 3.59919 26.868 5.20243L28 6.3579H34C36.2091 6.3579 38 8.13508 38 10.3273Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20.4037 10 20.7678 10.2427 20.9231 10.6154L24.6645 19.5947C24.6706 19.6086 24.6765 19.6226 24.682 19.6368L25.9231 22.6154C26.1355 23.1252 25.8944 23.7107 25.3846 23.9231C24.8748 24.1355 24.2893 23.8944 24.0769 23.3846L23.0833 21H16.9167L15.9231 23.3846C15.7107 23.8944 15.1252 24.1355 14.6154 23.9231C14.1056 23.7107 13.8645 23.1252 14.0769 22.6154L15.318 19.6368C15.3235 19.6226 15.3294 19.6086 15.3355 19.5947L19.0769 10.6154C19.2322 10.2427 19.5963 10 20 10ZM17.75 19H22.25L20 13.6L17.75 19Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M26 17C26 16.4477 26.4477 16 27 16H33C33.5523 16 34 16.4477 34 17C34 17.5523 33.5523 18 33 18H27C26.4477 18 26 17.5523 26 17Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23 44V36H25V44H23Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M30 40H18V38H30V40Z" fill="#333333"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M34.0689 28.6419C32.7749 27.8889 30.9145 27.4415 28.5081 28.8613C25.551 30.606 22.766 31.0586 19.9243 31.1191C18.6899 31.1453 17.4295 31.0975 16.1531 31.049C15.9779 31.0424 15.8025 31.0357 15.6267 31.0292C14.1588 30.9751 12.6498 30.9321 11.0416 30.9991L10.9584 29.0009C12.6501 28.9304 14.2255 28.9762 15.7005 29.0306C15.8789 29.0372 16.0556 29.0439 16.2306 29.0505C17.5141 29.0991 18.7109 29.1444 19.8818 29.1195C22.5089 29.0636 24.924 28.6538 27.4919 27.1387C30.6105 25.2987 33.2501 25.8514 35.0748 26.9133C35.9625 27.4298 36.6445 28.0561 37.1022 28.5473C37.3325 28.7944 37.5101 29.0115 37.6323 29.1703C37.6935 29.2498 37.7411 29.3151 37.7749 29.3626C37.7917 29.3863 37.8051 29.4056 37.8151 29.4201L37.8273 29.4382L37.8315 29.4444L37.8338 29.4478C37.8341 29.4483 37.8343 29.4487 37 30C36.1657 30.5512 36.1659 30.5516 36.1662 30.552L36.1647 30.5498C36.1611 30.5446 36.1543 30.5348 36.1444 30.5208C36.1245 30.4928 36.0921 30.4482 36.0475 30.3903C35.9581 30.2742 35.821 30.1059 35.6392 29.9109C35.2727 29.5177 34.7407 29.0328 34.0689 28.6419Z" fill="#333333"/>
+                    </svg>
+                    SVG;
         $this->assertSame($expected, $result);
     }
 
     /** @test */
     public function it_can_add_styles_to_icons()
     {
-        $result = svg('heroicon-o-bell', ['style' => 'color: #555'])->toHtml();
+        $result = svg('healthicon-f-mask', ['style' => 'color: #555'])->toHtml();
 
         $expected = <<<'SVG'
-            <svg style="color: #555" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            <svg style="color: #555" fill="currentColor" stroke="none" viewBox="0 0 48 48"  xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1604 12.6419C20.1604 12.6419 9.00001 12.6419 9.00001 16.8683C9.00001 16.9413 9.00018 17.0141 9.00053 17.0866L7.37002 17.4489C5.39982 17.8868 4.06441 19.7237 4.25576 21.7329L4.82916 27.7536C4.9725 29.2587 5.95223 30.5544 7.36135 31.1024L14.5532 33.8992C18.6505 38 23.5161 38 23.5161 38H24.4839C24.4839 38 29.2777 38 33.3556 33.9897C33.5139 34.013 33.6801 33.9984 33.8411 33.94L40.5947 31.4894C42.0577 30.9585 43.0799 29.6273 43.2151 28.0768L43.7722 21.6895C43.944 19.7203 42.6516 17.9209 40.7306 17.4548L38.9997 17.0348C38.9999 16.9794 39 16.9239 39 16.8683C39 12.6419 28.0144 12.6415 28.0144 12.6415L27.1138 11.0261C26.7607 10.3926 26.0923 10 25.367 10H22.8079C22.0826 10 21.4141 10.3927 21.061 11.0263L20.1604 12.6419ZM38.9444 19.0794C38.6635 24.5285 37.3449 28.4082 35.6098 31.1706L39.9125 29.6093C40.644 29.3439 41.1551 28.6783 41.2227 27.9031L41.7798 21.5158C41.8657 20.5311 41.2195 19.6314 40.259 19.3984L38.9444 19.0794ZM7.80388 19.4013L9.05786 19.1226C9.33201 24.3299 10.555 28.1007 12.1826 30.8314L8.08625 29.2384C7.38169 28.9644 6.89182 28.3165 6.82015 27.564L6.24675 21.5433C6.15108 20.5387 6.81878 19.6202 7.80388 19.4013ZM24.2425 18.5299L24 18.4692L23.7575 18.5299L17.7575 20.0299C17.2217 20.1638 16.8959 20.7067 17.0299 21.2425C17.1638 21.7783 17.7067 22.1041 18.2425 21.9701L24 20.5308L29.7575 21.9701C30.2933 22.1041 30.8362 21.7783 30.9701 21.2425C31.1041 20.7067 30.7783 20.1638 30.2425 20.0299L24.2425 18.5299Z" fill="#333333"/>
             </svg>
             SVG;
 
-        $this->assertSame($expected, $result);
+        $this->assertEquals($expected, $result);
     }
 
     protected function getPackageProviders($app)
     {
         return [
             BladeIconsServiceProvider::class,
-            BladeHeroiconsServiceProvider::class,
+            BladeHealthIconsServiceProvider::class,
         ];
     }
 }
