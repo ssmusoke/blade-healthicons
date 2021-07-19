@@ -4,12 +4,12 @@ return [
 
     /*
     |-----------------------------------------------------------------
-    | Default Prefix
+    | Default Prefix Base
     |-----------------------------------------------------------------
     |
-    | This config option allows you to define a default prefix for
-    | your icons. The dash separator will be applied automatically
-    | to every icon name. It's required and needs to be unique.
+    | This config option allows you to customize the default prefix for
+    | healthicons various icon packs. The full prefix will be based on this
+    | value and the style set base. ('_f' = Filled, '_n' = Negative, '_o' = Outline)
     |
     */
 
